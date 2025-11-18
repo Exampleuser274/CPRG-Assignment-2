@@ -1,18 +1,121 @@
 def show_menu():
-    pass
+    '''The main menu
+    Returns either 1, 2, 3, or 4 depending on user input'''
+    check = True
+    print("Welcome to the students record program")
+    print("What would you like to do today?")
+    print("-Find a student? enter 1")
+    print("-edit a student's info using student ID? enter 2")
+    print("-Add a new student? enter 3")
+    print("-Remove a student? enter 4")
+    while check:
+
+        answer = input("")
+        if answer == "1" or answer == "2" or answer == "3" or answer == "4":
+            check = False
+            continue
+        else:
+            print("Please enter a valid response")
+    return(int(answer))
 def add(students,id,name,gpa,semester):
-    pass
+    '''
+    takes the list of students and the information of a new student and returns an appended list
+    the add_function contains this
+    '''
+    newstudent = [id,name,gpa,semester]
+    students.append(newstudent)
+    print("Student added")
+    print(id,name,gpa,semester)
+    return students
 def remove(students,id):
-    pass
-def edit_name(students,id,old,new):
-    pass
+    '''
+    Takes the list of students and the id of a student, then returns the list with the student removed
+    the remove_menu function contains this
+    '''
+    for student in students:
+        if id == student[0]:
+            students.pop(students.index(student))
+            print("Student removed")
+    return students
+def edit_name(students,id,new):
+    '''
+    takes the list of students, the id of a student, and the new name for the student, then returns the updated list
+    the edit_menu function contains this
+    '''
+    for student in students:
+        if id == student[0]:
+            student[1] = new
+            print("Student name modified for the student with id{id}")
+            print("Student's new name is{new}")
+    return(students)
 def search(students,id):
-    pass
+    '''
+    Checks the list of students for a matching ID then prints the info if it is found
+    the search_menu function contains this
+    '''
+    check = False
+    for student in students:
+        if id == student[0]:
+            check = True
+            print("Student found")
+            for i in student:
+                print(i,end=" ")
+    if check == False:
+        print("Student not found")
 def run_search(students):
-    pass
+    '''Menu for the search function'''
+    answer = 0
+    while answer != -1:
+        print("Enter the id of the student. Enter -1 to return to the previous menu")
+        answer = int(input(""))
+        if answer != -1:
+            search(students,answer)
+    
 def run_edit(students):
-    pass
+    '''menu for editing stuent name'''
+    check = 0
+    while check != -1:
+        print("Enter the id of the student. Enter -1 to return to the previous menu")
+        check = int(input(""))
+        if check != -1:
+            students = edit_name(students,check)
+    
 def run_add(students):
-    pass
+    '''menu for adding a student'''
+    check = True
+    while check:
+        print("Enter id of the student, followed by the student's information.")
+        print("id:")
+        student_id = int(input(""))
+        print("Name:")
+        student_name = input("")
+        print("GPA:")
+        student_gpa = float(input(""))
+        print("Semester:")
+        student_semester = input("")
+        students = add(students,student_id,student_name,student_gpa,student_semester)
+        check2 = True
+        while check2:
+            print("Do you want to add a new student?y(yes)/n(no)")
+            check3 = input("").lower
+            if check3 == "y" or check3 == "yes":
+                check2 = False
+            elif check3 == "n" or check3 == "no":
+                check2 = False
+                check = False
 def run_remove(students):
-    pass
+    '''menu for removing a student'''
+    check = True
+    while check:
+        print("Enter id of the student that you want to remove from the students' registry.")
+        student_id = int(input(""))
+        students = remove(students,student_id)
+        check2 = True
+        while check2:
+            print("Do you want to remove more students?y(yes)/n(no)")
+            check3 = input("").lower
+            if check3 == "y" or check3 == "yes":
+                check2 = False
+            elif check3 == "n" or check3 == "no":
+                check2 = False
+                check = False
