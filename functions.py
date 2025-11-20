@@ -17,12 +17,12 @@ def show_menu():
         else:
             print("Please enter a valid response")
     return(int(answer))
-def add(students,id,name,gpa,semester):
+def add_student(students,id,name,gpa,semester):
     '''
     takes the list of students and the information of a new student and returns an appended list
     the add_function contains this
     '''
-    newstudent = [id,name,gpa,semester]
+    newstudent = { "id":id,"name":name,"gpa":gpa,"semester":semester}
     students.append(newstudent)
     print("Student added")
     print(id,name,gpa,semester)
@@ -33,7 +33,7 @@ def remove(students,id):
     the remove_menu function contains this
     '''
     for student in students:
-        if id == student[0]:
+        if id == student["id"]:
             students.pop(students.index(student))
             print("Student removed")
     return students
@@ -43,25 +43,21 @@ def edit_name(students,id,new):
     the edit_menu function contains this
     '''
     for student in students:
-        if id == student[0]:
-            student[1] = new
+        if id == student["id"]:
+            student["name"] = new
             print("Student name modified for the student with id{id}")
             print("Student's new name is{new}")
     return(students)
 def search(students,id):
     '''
-    Checks the list of students for a matching ID then prints the info if it is found
+    Checks the id key value for each dictionary in the list then returns the index of the matching id, or -1 if none match
     the search_menu function contains this
     '''
-    check = False
+    index = -1
     for student in students:
         if id == student[0]:
-            check = True
-            print("Student found")
-            for i in student:
-                print(i,end=" ")
-    if check == False:
-        print("Student not found")
+            index = students.index(student)
+    return index
 def run_search(students):
     '''Menu for the search function'''
     answer = 0
@@ -69,7 +65,12 @@ def run_search(students):
         print("Enter the id of the student. Enter -1 to return to the previous menu")
         answer = int(input(""))
         if answer != -1:
-            search(students,answer)
+            index = search(students,answer)
+            if index == -1:
+                print("Student not found")
+            else:
+                print("Student found")
+                print(students[index]["id"],students[index]["name"],students[index]["gpa"],students[index]["semester"])
     
 def run_edit(students):
     '''menu for editing stuent name'''
@@ -93,7 +94,7 @@ def run_add(students):
         student_gpa = float(input(""))
         print("Semester:")
         student_semester = input("")
-        students = add(students,student_id,student_name,student_gpa,student_semester)
+        students = add_student(students,student_id,student_name,student_gpa,student_semester)
         check2 = True
         while check2:
             print("Do you want to add a new student?y(yes)/n(no)")
