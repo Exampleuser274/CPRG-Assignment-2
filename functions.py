@@ -55,7 +55,7 @@ def search(students,id):
     '''
     index = -1
     for student in students:
-        if id == student[0]:
+        if id == student["id"]:
             index = students.index(student)
     return index
 def run_search(students):
