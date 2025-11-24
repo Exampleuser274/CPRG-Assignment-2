@@ -12,11 +12,10 @@ def show_menu():
 
         answer = input("")
         if answer == "1" or answer == "2" or answer == "3" or answer == "4":
-            check = False
-            continue
+            return int(answer)
         else:
             print("Please enter a valid response")
-    return(int(answer))
+
 def add_student(students,id,name,gpa,semester):
     '''
     takes the list of students and the information of a new student and returns an appended list
@@ -37,6 +36,7 @@ def remove(students,id):
             students.pop(students.index(student))
             print("Student removed")
     return students
+
 def edit_name(students,id,new):
     '''
     takes the list of students, the id of a student, and the new name for the student, then returns the updated list
@@ -48,6 +48,7 @@ def edit_name(students,id,new):
             print("Student name modified for the student with id{id}")
             print("Student's new name is{new}")
     return(students)
+
 def search(students,id):
     '''
     Checks the id key value for each dictionary in the list then returns the index of the matching id, or -1 if none match
@@ -98,12 +99,15 @@ def run_add(students):
         check2 = True
         while check2:
             print("Do you want to add a new student?y(yes)/n(no)")
-            check3 = input("").lower
+            check3 = input("").lower()
             if check3 == "y" or check3 == "yes":
                 check2 = False
-            elif check3 == "n" or check3 == "no":
+            elif check3 == "n" or check3 == "no":    
                 check2 = False
                 check = False
+            else:
+                print("Please enter a valid response yes or no.")
+
 def run_remove(students):
     '''menu for removing a student'''
     check = True
@@ -114,7 +118,7 @@ def run_remove(students):
         check2 = True
         while check2:
             print("Do you want to remove more students?y(yes)/n(no)")
-            check3 = input("").lower
+            check3 = input("").lower()
             if check3 == "y" or check3 == "yes":
                 check2 = False
             elif check3 == "n" or check3 == "no":
