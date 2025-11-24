@@ -22,16 +22,19 @@ def add_student(students,id,name,gpa,semester):
     takes the list of students and the information of a new student and returns an appended list
     the add_function contains this
     '''
+
     newstudent = { "id":id,"name":name,"gpa":gpa,"semester":semester}
+    '''students[id] = [name,gpa,semester]'''
     students.append(newstudent)
     print("Student added")
-    print(id,name,gpa,semester)
-    return students
+    for item in students[id]:
+        print(item,end=" ")
 def remove(students,id):
     '''
     Takes the list of students and the id of a student, then returns the list with the student removed
     the remove_menu function contains this
     '''
+    
     for student in students:
         if id == student["id"]:
             students.pop(students.index(student))
@@ -45,8 +48,8 @@ def edit_name(students,id,new):
     for student in students:
         if id == student["id"]:
             student["name"] = new
-            print("Student name modified for the student with id{id}")
-            print("Student's new name is{new}")
+            print("Student name modified for the student with id", id)
+            print("Student's new name is",new)
     return(students)
 def search(students,id):
     '''
@@ -79,7 +82,9 @@ def run_edit(students):
         print("Enter the id of the student. Enter -1 to return to the previous menu")
         check = int(input(""))
         if check != -1:
-            students = edit_name(students,check)
+            print("enter new name")
+            newname = input("")
+            students = edit_name(students,check,newname)
     
 def run_add(students):
     '''menu for adding a student'''
