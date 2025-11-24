@@ -26,8 +26,10 @@ def add_student(students,id,name,gpa,semester):
     '''students[id] = [name,gpa,semester]'''
     students.append(newstudent)
     print("Student added")
-    for item in students[id]:
-        print(item,end=" ")
+    for item in students[-1]:
+        print(item,end='')
+    '''for item in students[id]:
+        print(item,end=" ")'''
 def remove(students,id):
     '''
     Takes the list of students and the id of a student, then returns the list with the student removed
