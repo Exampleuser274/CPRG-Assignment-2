@@ -1,6 +1,6 @@
 import functions as fn
 
-students = []
+students = {}
 
 while True:
     option = fn.show_menu()

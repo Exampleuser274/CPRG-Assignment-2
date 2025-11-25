@@ -18,30 +18,24 @@ def show_menu():
 
 def add_student(students,id,name,gpa,semester):
     '''
-    takes the list of students and the information of a new student and returns an appended list
+    takes the dictionary of students and the information of a new student and returns an appended dictionary
     the add_function contains this
     '''
-
-    newstudent = { "id":id,"name":name,"gpa":gpa,"semester":semester}
-    '''students[id] = [name,gpa,semester]'''
-    students.append(newstudent)
+    students[id] = { "name":name,"gpa":gpa,"semester":semester}
     print("Student added")
-    for key, item in newstudent.items():
-        print(item,end='    ')
-    '''for item in students[id]:
-        print(item,end=" ")'''
+    print(id,end="  ")
+    for item in students[id]:
+        print(item,end="    ")
     print('')
     return students
 def remove(students,id):
     '''
-    Takes the list of students and the id of a student, then returns the list with the student removed
+    Takes the dictionary of students and the id of a student, then returns the list with the student removed
     the remove_menu function contains this
     '''
-    
-    for student in students:
-        if id == student["id"]:
-            students.pop(students.index(student))
-            print("Student removed")
+    if id in students:
+        students.pop(id)
+        print("Student removed")
     return students
 
 def edit_name(students,id,new):
@@ -49,11 +43,10 @@ def edit_name(students,id,new):
     takes the list of students, the id of a student, and the new name for the student, then returns the updated list
     the edit_menu function contains this
     '''
-    for student in students:
-        if id == student["id"]:
-            student["name"] = new
-            print("Student name modified for the student with id", id)
-            print("Student's new name is",new)
+    if id in students:
+        students[id]["name"] = new
+        print("Student name modified for the student with id", id)
+        print("Student's new name is",new)
     return(students)
 
 def search(students,id):
@@ -62,12 +55,10 @@ def search(students,id):
     the search_menu function contains this
     '''
     index = -1
-    for student in students:
-        if id == student["id"]:
-            index = students.index(student)
+    if id in students:
+        index = id
     return index
 def run_search(students):
-    '''Menu for the search function'''
     answer = 0
     while answer != -1:
         print("Enter the id of the student. Enter -1 to return to the previous menu")
@@ -78,10 +69,10 @@ def run_search(students):
                 print("Student not found")
             else:
                 print("Student found")
-                print(students[index]["id"],students[index]["name"],students[index]["gpa"],students[index]["semester"])
+                print(index,students[index]["name"],students[index]["gpa"],students[index]["semester"])
+    return students
     
 def run_edit(students):
-    '''menu for editing stuent name'''
     check = 0
     while check != -1:
         print("Enter the id of the student. Enter -1 to return to the previous menu")
@@ -90,9 +81,9 @@ def run_edit(students):
             print("enter new name")
             newname = input("")
             students = edit_name(students,check,newname)
+    return students
     
 def run_add(students):
-    '''menu for adding a student'''
     check = True
     while check:
         print("Enter id of the student, followed by the student's information.")
@@ -116,6 +107,7 @@ def run_add(students):
                 check = False
             else:
                 print("Please enter a valid response yes or no.")
+    return students
 
 def run_remove(students):
     '''menu for removing a student'''
@@ -133,3 +125,4 @@ def run_remove(students):
             elif check3 == "n" or check3 == "no":
                 check2 = False
                 check = False
+    return students
