@@ -23,10 +23,7 @@ def add_student(students,id,name,gpa,semester):
     '''
     students[id] = { "name":name,"gpa":gpa,"semester":semester}
     print("Student added")
-    print(id,end="  ")
-    for item in students[id]:
-        print(item,end="    ")
-    print('')
+    print(id,students[id]["name"],students[id]["gpa"],students[id]["semester"],sep="    ")
     return students
 def remove(students,id):
     '''
