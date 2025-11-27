@@ -1,0 +1,94 @@
+Welcome to the students record program
+What would you like to do today?
+-Find a student? enter 1
+-edit a student's info using student ID? enter 2
+-Add a new student? enter 3
+-Remove a student? enter 4
+3
+Enter id of the student, followed by the student's information.
+id:
+123
+Name:
+Emy Wang
+GPA:
+3.4
+Semester:
+3
+Student added
+123    Emy Wang    3.4    3    
+Do you want to add a new student?y(yes)/n(no)
+y
+Enter id of the student, followed by the student's information.
+id:
+124
+Name:
+Jimmy Clark
+GPA:
+3.2
+Semester:
+4
+Student added
+124    Jimmy Clark    3.2    4    
+Do you want to add a new student?y(yes)/n(no)
+yes
+Enter id of the student, followed by the student's information.
+id:
+125
+Name:
+John Doe
+GPA:
+2.8
+Semester:
+2
+Student added
+125    John Doe    2.8    2    
+Do you want to add a new student?y(yes)/n(no)
+n
+Would you like to continue(y/yes), or exit the program(n/no)
+y
+Welcome to the students record program
+What would you like to do today?
+-Find a student? enter 1
+-edit a student's info using student ID? enter 2
+-Add a new student? enter 3
+-Remove a student? enter 4
+1
+Enter the id of the student. Enter -1 to return to the previous menu
+123
+Student found
+123 Emy Wang 3.4 3
+Enter the id of the student. Enter -1 to return to the previous menu
+-1
+Would you like to continue(y/yes), or exit the program(n/no)
+y
+Welcome to the students record program
+What would you like to do today?
+-Find a student? enter 1
+-edit a student's info using student ID? enter 2
+-Add a new student? enter 3
+-Remove a student? enter 4
+2
+Enter the id of the student. Enter -1 to return to the previous menu
+123
+enter new name
+Sarah Wang
+Student name modified for the student with id 123
+Student's new name is Sarah Wang
+Enter the id of the student. Enter -1 to return to the previous menu
+-1
+Would you like to continue(y/yes), or exit the program(n/no)
+y
+Welcome to the students record program
+What would you like to do today?
+-Find a student? enter 1
+-edit a student's info using student ID? enter 2
+-Add a new student? enter 3
+-Remove a student? enter 4
+4
+Enter id of the student that you want to remove from the students' registry.
+123
+Student removed
+Do you want to remove more students?y(yes)/n(no)
+n
+Would you like to continue(y/yes), or exit the program(n/no)
+n
